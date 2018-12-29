@@ -7,7 +7,6 @@ const Campground = require('./models/campground');
 // const User = require('./models/user');
 seedDB = require('./seeds');
 
-seedDB();
 mongoose.connect('mongodb://localhost/yelp_camp', {
     useNewUrlParser: true
 });
@@ -16,6 +15,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.set('view engine', 'ejs');
+seedDB();
 
 // index
 app.get('/', (req, res) => {
