@@ -2,7 +2,12 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const Campground = require('./models/campground');
+// const Comment = require('./models/comment');
+// const User = require('./models/user');
+seedDB = require('./seeds');
 
+seedDB();
 mongoose.connect('mongodb://localhost/yelp_camp', {
     useNewUrlParser: true
 });
@@ -11,15 +16,6 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.set('view engine', 'ejs');
-
-// Schema
-const campgroundSchema = new mongoose.Schema({
-    name: String,
-    image: String,
-    description: String,
-});
-
-const Campground = mongoose.model('Campground', campgroundSchema);
 
 // index
 app.get('/', (req, res) => {
@@ -70,7 +66,7 @@ app.get('/campgrounds/new', (req, res) => {
 // SHOW: shows info about one campground
 app.get('/campgrounds/:id', (req, res) => {
     // find the campground with the provided ID
-    Campground.findById(req.params.id, (err, foundCampground) => {
+    Campground.findById(req.params.id).populate('comments').exec((err, foundCampground) => {
         if (err) {
             console.error(log);
         } else {
