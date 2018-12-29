@@ -1,0 +1,15 @@
+<% include partials/header %>
+
+<div class="container">
+    <h1>
+        <%= campground.name %>
+    </h1>
+    <p>
+        <img class="img-fluid" src="../img/<%= campground.image %>" alt="An image of <%= campground.name %>">
+    </p>
+    <p>
+        <%= campground.description %>
+    </p>
+</div>
+
+<% include partials/footer %>
