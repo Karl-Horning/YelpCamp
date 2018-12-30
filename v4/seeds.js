@@ -31,6 +31,11 @@ const data = [{
         name: "Canyon Floor",
         image: "scott-goodwill-359336-unsplash.jpg",
         description: "Very high walls and not much sand. I'd go there again."
+    },
+    {
+        name: "Sunset Creek",
+        image: "arthur-poulin-96074-unsplash.jpg",
+        description: "Beautiful valley with wonderful sunsets."
     }
 ]
 
