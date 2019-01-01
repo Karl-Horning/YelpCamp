@@ -133,5 +133,30 @@ app.post('/campgrounds/:id/comments', (req, res) => {
     });
 });
 
+// //////////////////////////////////////////
+// Authorisation routes
+// //////////////////////////////////////////
+
+// Show register form
+app.get('/register', (req, res) => {
+    res.render('register');
+});
+
+// Handle sign up logic
+app.post('/register', (req, res) => {
+    const newUser = new User({
+        username: req.body.username
+    });
+    User.register(newUser, req.body.password, (err, user) => {
+        if (err) {
+            console.error(err);
+            return res.render('register');
+        }
+        passport.authenticate('local')(req, res, () => {
+            res.redirect('/campgrounds');
+        });
+    });
+});
+
 // Run the server
 app.listen(3000, () => console.log("The server is running on port 3000"));
