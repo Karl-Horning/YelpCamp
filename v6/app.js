@@ -20,6 +20,18 @@ app.use(bodyParser.urlencoded({
 app.set('view engine', 'ejs');
 seedDB();
 
+// Passport configuration
+app.use(require('express-session')({
+    secret: 'This should not usually be uploaded to GitHub!',
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 // index
 app.get('/', (req, res) => {
     res.render('landing');
