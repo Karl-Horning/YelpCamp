@@ -171,5 +171,11 @@ app.post('/login', passport.authenticate('local', {
     // middleware is used to login
 });
 
+// Logout route
+app.get('/logout', (req, res) => {
+    req.logOut();
+    res.redirect('/campgrounds');
+});
+
 // Run the server
 app.listen(3000, () => console.log("The server is running on port 3000"));
