@@ -158,5 +158,18 @@ app.post('/register', (req, res) => {
     });
 });
 
+// Show login form
+app.get('/login', (req, res) => {
+    res.render('login');
+});
+
+// Handle login logic
+app.post('/login', passport.authenticate('local', {
+    successRedirect: '/campgrounds',
+    failureRedirect: '/login'
+}), (req, res) => {
+    // middleware is used to login
+});
+
 // Run the server
 app.listen(3000, () => console.log("The server is running on port 3000"));
