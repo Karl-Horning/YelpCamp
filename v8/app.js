@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.set('view engine', 'ejs');
-seedDB();
+// seedDB();
 
 // Passport configuration
 app.use(require('express-session')({
