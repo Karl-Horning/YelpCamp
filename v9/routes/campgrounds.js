@@ -23,10 +23,15 @@ router.post('/', isLoggedIn, (req, res) => {
     const name = req.body.name;
     const image = req.body.image;
     const description = req.body.description;
+    const author = {
+        id: req.user._id,
+        username: req.user.username
+    }
     const newCampground = {
         name: name,
         image: image,
-        description: description
+        description: description,
+        author: author
     };
 
     // create a new campground and save to DB
@@ -34,6 +39,7 @@ router.post('/', isLoggedIn, (req, res) => {
         if (err) {
             console.error(err);
         } else {
+            console.warn(newCampground);
             // redirect back to campgrounds page
             res.redirect('/campgrounds');
         }
