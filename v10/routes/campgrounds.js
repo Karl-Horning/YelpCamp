@@ -66,6 +66,22 @@ router.get('/:id', (req, res) => {
     });
 });
 
+// EDIT: edit a campground
+router.get('/:id/edit', (req, res) => {
+    Campground.findById(req.params.id, (err, foundCampground) => {
+        if (err) {
+            console.error(log);
+        } else {
+            // render the template with that campground
+            res.render('campgrounds/edit', {
+                campground: foundCampground
+            });
+        }
+    });
+});
+
+// UPDATE: update a campground
+
 // Middleware
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
