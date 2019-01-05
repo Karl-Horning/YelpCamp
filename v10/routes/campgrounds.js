@@ -56,7 +56,7 @@ router.get('/:id', (req, res) => {
     // find the campground with the provided ID
     Campground.findById(req.params.id).populate('comments').exec((err, foundCampground) => {
         if (err) {
-            console.error(log);
+            console.error(err);
         } else {
             // render the template with that campground
             res.render('campgrounds/show', {
@@ -70,7 +70,8 @@ router.get('/:id', (req, res) => {
 router.get('/:id/edit', (req, res) => {
     Campground.findById(req.params.id, (err, foundCampground) => {
         if (err) {
-            console.error(log);
+            console.error(err);
+            res.redirect('/campgrounds');
         } else {
             // render the template with that campground
             res.render('campgrounds/edit', {
@@ -81,6 +82,19 @@ router.get('/:id/edit', (req, res) => {
 });
 
 // UPDATE: update a campground
+router.put('/:id', (req, res) => {
+    // find and update the correct campground
+    // redirect to the show page
+    Campground.findByIdAndUpdate(req.params.id, req.body.campground, (err, updatedCampground) => {
+        if (err) {
+            console.error(err);
+            res.redirect('/campgrounds');
+        } else {
+            // render the template with that campground
+            res.redirect(`/campgrounds/${req.params.id}`);
+        }
+    });
+});
 
 // Middleware
 function isLoggedIn(req, res, next) {
