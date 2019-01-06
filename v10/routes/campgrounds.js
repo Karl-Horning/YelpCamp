@@ -96,6 +96,19 @@ router.put('/:id', (req, res) => {
     });
 });
 
+// DESTROY: delete a campground
+router.delete('/:id', (req, res) => {
+    // res.send('DELETING!');
+    Campground.findByIdAndDelete(req.params.id, err => {
+        if (err) {
+            console.error(err);
+            res.redirect('/campgrounds');
+        } else {
+            res.redirect('/campgrounds');
+        }
+    });
+});
+
 // Middleware
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
