@@ -45,6 +45,7 @@ router.post('/login', passport.authenticate('local', {
 // Logout route
 router.get('/logout', (req, res) => {
     req.logOut();
+    req.flash('success', 'Logged you out!');
     res.redirect('/campgrounds');
 });
 
@@ -53,6 +54,7 @@ function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
         return next();
     }
+    req.flash('error', 'Please login first');
     res.redirect('/login');
 }
 
