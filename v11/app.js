@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const flash = require('connect-flash');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const passport = require('passport');
@@ -24,6 +25,7 @@ app.use(bodyParser.urlencoded({
 app.set('view engine', 'ejs');
 app.use(express.static(`${__dirname}/public`));
 app.use(methodOverride('_method'));
+app.use(flash());
 app.use(express.static('views'));
 // seedDB();
 
@@ -41,6 +43,8 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) => {
     res.locals.currentUser = req.user;
+    res.locals.error = req.flash('error')
+    res.locals.success = req.flash('success')
     next();
 });
 
