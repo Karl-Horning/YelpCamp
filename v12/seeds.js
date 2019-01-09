@@ -10,11 +10,13 @@ const data = [{
     },
     {
         name: 'Desert Mesa',
+        price: '10.50',
         image: 'sahin-yesilyaprak-546700-unsplash.jpg',
         description: "No, no, no. A vigilante is just a man lost in scramble for his own gratification. He can be destroyed or locked up. But if you make yourself more than just a man, if you devote yourself to an idel and if they can't stop you then you become something else entirely. Legend, Mr Wayne."
     },
     {
         name: "Glacier Camp",
+        price: '7.99',
         image: "dino-reichmuth-97252-unsplash.jpg",
         description: "Lorem ipsum dolor amet vape selfies aesthetic seitan affogato tousled, flannel drinking vinegar synth. You probably haven't heard of them pork belly helvetica lo-fi. Gluten-free viral post-ironic, meditation schlitz artisan chillwave forage vape butcher lumbersexual pork belly XOXO fashion axe umami. Kombucha chia tousled tacos air plant. Banh mi brooklyn normcore lomo health goth vegan glossier chambray. Biodiesel migas palo santo fashion axe food truck."
     },
