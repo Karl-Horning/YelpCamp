@@ -4,6 +4,7 @@ const Comment = require('./models/comment');
 
 const data = [{
         name: 'Granite Hill',
+        price: '9.50',
         image: 'adrian-393713-unsplash.jpg',
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam porttitor tincidunt eros, quis pharetra erat tempor a. Sed ac lorem malesuada, eleifend libero eget, egestas est. Aliquam eu nulla eget mi elementum sollicitudin sit amet eu mauris. Integer vitae ante eget est facilisis accumsan ut vitae sem. Pellentesque in vestibulum purus. Morbi sollicitudin, sapien ac suscipit consequat, ligula urna tempor libero, ut vehicula eros felis nec ipsum. Aenean egestas, lacus in aliquam suscipit, mi velit bibendum eros, eu eleifend enim sem at libero.'
     },
