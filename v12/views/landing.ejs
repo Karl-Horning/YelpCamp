@@ -1,13 +1,39 @@
-<% include ./partials/header %>
+<!DOCTYPE html>
+<html>
 
-<div class="container">
-    <h1>Index!</h1>
+<head>
+    <title>YelpCamp</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/landing.css" />
+</head>
 
-    <p>Welcome to YelpCamp!</p>
+<body>
 
-    <p>
-        <a href="/campgrounds">View all campgrounds</a>
-    </p>
-</div>
+    <div class="container">
+        <% if(error && error.length > 0){ %>
+        <div class="alert alert-danger" role="alert">
+            <%= error %>
+        </div>
+        <% } %>
+        <% if(success && success.length > 0){ %>
+        <div class="alert alert-success" role="alert">
+            <%= success %>
+        </div>
+        <% } %>
+    </div>
 
-<% include ./partials/footer %>
+    <div id="landing-header">
+        <h1>Welcome to YelpCamp!</h1>
+        <a href="/campgrounds" class="btn btn-lg btn-success">View All Campgrounds</a>
+    </div>
+
+    <ul class="slideshow">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+    <% include partials/footer %>
